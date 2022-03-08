@@ -1,0 +1,37 @@
+ALGORITHM trouve_sommes_des_elements_distincts
+VAR
+    sum,i,j,elt1,elt2:INTEGER;
+    arr: ARRAY_OF INTEGER[5];
+    tab: ARRAY_OF INTEGER[5];
+    existe:BOOLEAN;
+
+BEGIN
+    sum:=0;
+    WRITE("Entrez un tableau d'entier:");
+    FOR i FROM 0 TO Length.arr-1 STEP 1 DO
+        READ(arr);
+    END_FOR
+    WRITE("Entrez un tableau d'entier:");
+    FOR j FROM 0 TO Length.tab-1 STEP 1 DO
+        READ(tab);
+    END_FOR
+    FOR i FROM 0 TO Length.arr-1 STEP 1 DO
+        FOR j FROM j+1 TO Length.tab-1 STEP 1 DO
+            IF (arr[i]<>tab[i]) THEN
+                existe:=TRUE;
+                elt1:=arr[i]+1;
+            >END-IF 
+        END_FOR   
+    END_FOR
+    FOR j FROM 0 TO Length.tab-1 STEP 1 DO
+        FOR i FROM i+1 TO Length.arr-1 STEP 1 DO
+            IF (tab[i]<>arr[i]) THEN 
+                existe:=TRUE;
+                elt2:=tab[i]+1
+            END_IF
+        END_FOR
+    END_FOR
+    sum:=elt1+elt2;
+    WRITE("La somme des éléments distincts des tableaux est:", sum);
+
+END
